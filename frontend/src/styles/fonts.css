@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Molgan';
+    src: url('../fonts/Molgan.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TeknafRegular';
+    src: url('../fonts/TeknafRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eightgon';
+    src: url('../fonts/Eightgon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TiemposText-Regular';
+    src: url('../fonts/TiemposText-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

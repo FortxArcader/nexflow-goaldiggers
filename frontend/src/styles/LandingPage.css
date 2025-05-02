@@ -1,0 +1,654 @@
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.App {
+    text-align: center;
+    min-height: 100vh;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+h2 {
+    font-family: "Eightgon", sans-serif;
+}
+
+p,
+a {
+    font-family: "TiemposText-Regular", sans-serif;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.main-content {
+    min-height: 100vh;
+    height: 100%;
+    padding: 100px 20px 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    scroll-snap-align: start;
+    scroll-margin-top: 80px; /* Account for fixed navbar */
+}
+
+.main-content p {
+    font-family: "TiemposText-Regular", sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin: 0.5rem 0;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 80px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.loaded::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-title {
+    font-family: "Molgan", sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin-bottom: 0rem;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.hero-paragraph {
+    font-family: "TeknafRegular", sans-serif;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+    -webkit-animation: fadeInUp 0.8s ease-out forwards;
+    -webkit-transform: translateY(30px);
+    -moz-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    -o-transform: translateY(30px);
+}
+
+.hero-title .nex {
+    color: #854ddc;
+}
+
+.hero-title .flow {
+    color: white;
+}
+
+.about-section {
+    min-height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+    margin: 0;
+    background: #0d0d0d;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.about-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #6527c4, transparent);
+}
+
+.about-section h2 {
+    font-family: "TeknafRegular", sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 2rem;
+    background: white;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+    -webkit-animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.about-content {
+    font-family: "TiemposText-Regular", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    color: #f5f5f5;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Responsive About Section */
+@media (max-width: 900px) {
+    .about-section {
+        padding: 4rem 1rem;
+    }
+    .about-content {
+        max-width: 95vw;
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+    }
+    .about-section h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 2.5rem 0.5rem;
+    }
+    .about-content {
+        font-size: 1rem;
+        padding: 0 0.2rem;
+    }
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Add smooth scrolling to the entire page */
+html {
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.input-container {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+    padding: 0 1rem;
+}
+
+.landing-input {
+    width: 100%;
+    padding: 1rem 4rem 1rem 1.5rem;
+    border: 2px solid #9455f4;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.landing-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+}
+
+.landing-send-btn {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #9455f4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.landing-send-btn:hover {
+    background: #9455f4;
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Chat Interface Styles */
+.chat-interface {
+    min-height: 100vh;
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem;
+}
+
+.chat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4rem);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.message {
+    margin-bottom: 1rem;
+    max-width: 80%;
+    margin-left: 1rem; /* Add default left margin */
+}
+
+.message.user {
+    margin-left: 3rem; /* Adjust left margin instead of auto */
+}
+
+.message-content {
+    background: #854ddc;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nex-neon {
+    color: #b78aff !important;
+    text-shadow: 0 0 5px #854ddc, 0 0 10px #854ddc, 0 0 20px #854ddc,
+        0 0 40px #9455f4, 0 0 80px #9455f4, 0 0 90px #9455f4;
+}
+
+.flow-neon {
+    color: white;
+    text-shadow: 0 0 5px #854ddc, 0 0 10px #854ddc, 0 0 20px #854ddc,
+        0 0 40px #9455f4, 0 0 80px #9455f4, 0 0 90px #9455f4;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 80px;
+    }
+
+    .input-container {
+        max-width: 90%;
+        margin-top: 1.5rem;
+    }
+
+    .landing-input {
+        padding: 0.8rem 3.5rem 0.8rem 1.2rem;
+    }
+
+    .landing-send-btn {
+        width: 35px;
+        height: 35px;
+        right: 23px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .message-content {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+}
+
+.founders-section {
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.founders-section h3 {
+    font-family: "TeknafRegular", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #b78aff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #854ddc55;
+}
+
+.founders-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.founder-card {
+    background: rgba(30, 20, 40, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(133, 77, 220, 0.13);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 210px;
+    max-width: 240px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1.5px solid #854ddc33;
+}
+
+.founder-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px #854ddc44;
+    border-color: #b78aff;
+}
+
+.founder-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #854ddc;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 18px #854ddc33;
+    background: #181818;
+}
+
+.founder-card h4 {
+    margin: 0.2rem 0 0.2rem 0;
+    font-size: 1.18rem;
+    color: #fff;
+    font-family: "TiemposText-Regular", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.founder-card h1 {
+    margin: 0.1rem 0 0.7rem 0;
+    font-size: 1rem;
+    color: #b78aff;
+    font-family: "TeknafRegular", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.linkedin-logo {
+    width: 32px;
+    height: 32px;
+    margin-top: 0.3rem;
+    border-radius: 50%;
+    background: #fff;
+    transition: box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px #854ddc33;
+}
+
+.linkedin-logo:hover {
+    box-shadow: 0 4px 16px #854ddc88;
+    transform: scale(1.08);
+}
+
+/* Responsive: stack on mobile, keep 2x2 on tablets */
+@media (max-width: 950px) {
+    .founders-container {
+        gap: 1.2rem;
+        max-width: 700px;
+    }
+    .founder-card {
+        min-width: 170px;
+        max-width: 200px;
+        padding: 1.2rem 0.7rem 1rem 0.7rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .founders-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .founder-card {
+        min-width: 140px;
+        max-width: 160px;
+        padding: 1rem 0.5rem 0.8rem 0.5rem;
+    }
+    .founder-img {
+        width: 80px;
+        height: 80px;
+    }
+    .linkedin-logo {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (max-width: 540px) {
+    .founders-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .founder-card {
+        width: 90vw;
+        max-width: 320px;
+        min-width: 0;
+        margin: 0 auto;
+        padding: 1rem 0.5rem 0.8rem 0.5rem;
+    }
+}
+
+/* contact form css */
+/* CSS for Contact Form */
+.ContactPage {
+    padding: 2rem;
+    background-color: #0d0d0d; /* Pure black background */
+    text-align: center;
+    color: #ffffff; /* White text for contrast */
+    position: relative; /* Ensure it can be layered */
+    z-index: 10; /* Bring it to the front */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); /* Add shadow for depth */
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #0d0d0d; /* Slightly lighter dark background for the form */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9); /* Stronger shadow for emphasis */
+    position: relative; /* Ensure it layers properly */
+    z-index: 20; /* Ensure the form is above other elements */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ffffff; /* White text for labels */
+    font-size: 25px;
+}
+
+input,
+textarea {
+    padding: 0.75rem;
+    border: 1px solid #444444; /* Subtle border */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #1a1a1a; /* Match the dark background */
+    color: #ffffff; /* White text for inputs */
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #9455f4; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(148, 85, 244, 0.5); /* Subtle glow effect */
+}
+
+.submit-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #9455f4; /* Purple button */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #7a3ee0; /* Slightly darker purple on hover */
+}
+.contact-form-title {
+    font-size: 2.5rem;
+}
+
+.contact-form-title {
+    font-family: "TeknafRegular", sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem); /* Same font size as About Me title */
+    margin-bottom: 2rem;
+    background: white;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+    -webkit-animation: fadeInUp 0.8s ease-out forwards;
+}
+
+input {
+    border-radius: 10px;
+}
+
+textarea {
+    border-radius: 10px;
+}
+
+/* neon divider */
+.divider-canvas {
+    background-color: #0d0d0d;
+    padding: 1rem 0; /* Add padding to the top and bottom */
+    position: relative; /* Required for pseudo-element positioning */
+    overflow: hidden; /* Hide any potential overflow */
+}
+
+.divider-canvas::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Vertically center the line */
+    left: 10%; /* Start the line 10% from the left */
+    right: 10%; /* End the line 10% from the right */
+    height: 2px; /* Adjust the height as needed */
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #b78aff,
+        #9455f4,
+        #b78aff,
+        transparent
+    ); /* More vibrant purple gradient */
+    transform: translateY(-50%); /* Fine-tune vertical centering */
+}

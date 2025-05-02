@@ -1,0 +1,234 @@
+@font-face {
+  font-family: "Molgan";
+  src: url("../fonts/Molgan.otf") format("truetype");
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #1c102c;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  left: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  display: none;
+  font-family: "Molgan", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: normal;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.brand-nex {
+  color: #854ddc;
+}
+
+.brand-flow {
+  color: white;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 3rem; /* Increased spacing between links */
+  align-items: center;
+  margin-right: 20px;
+  position: relative;
+  z-index: 1001;
+  overflow: visible;
+}
+
+.nav-link {
+  font-family: "TeknafRegular", sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0;
+  padding: 5px 0;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  display: inline-block;
+  text-align: center;
+}
+
+.nav-link:hover {
+  color: #854ddc;
+  letter-spacing: 5px;
+}
+
+.nav-link:after,
+.nav-link:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  content: "";
+  display: block;
+  margin: 0;
+  position: absolute;
+  transition: all 280ms ease-in-out;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link:before {
+  top: 0;
+}
+
+.nav-link:after {
+  bottom: 0;
+}
+
+.nav-link:hover:after,
+.nav-link:hover:before {
+  backface-visibility: hidden;
+  border-color: #854ddc;
+  transition: width 350ms ease-in-out;
+  width: 130%; /* Changed from 100% to 130% */
+}
+
+.nav-button {
+  padding: 0.8rem 1.5rem;
+  background: #854ddc;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-button:hover {
+  transform: translateY(-1px);
+  color: #aa77f6;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: 0.3s ease;
+}
+
+/* filepath: vsls:/src/styles/NavBar.css */
+.navbar-logo {
+  font-family: "Molgan", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: white; /* Optional: Match the color of the user's messages */
+  margin-right: auto; /* Push it to the left */
+  /* padding: 0 10px; */
+  padding-left: 20px;
+}
+
+.glass {
+  height: 75px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 20px;
+  border-bottom: solid rgba(255, 255, 255, 0.13) 1px;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    clip-path: circle(0% at 100% 0);
+    transition: 0.5s ease-out;
+    width: 100%;
+    gap: 2rem;
+    text-align: center;
+    z-index: 999;
+  }
+
+  .navbar-links.active {
+    clip-path: circle(141.4% at 100% 0);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+  }
+
+  .nav-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 0.5rem auto;
+  }
+}

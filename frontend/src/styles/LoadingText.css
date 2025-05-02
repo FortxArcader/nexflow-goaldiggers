@@ -1,0 +1,41 @@
+.loading-text-wrapper {
+  position: relative;
+  min-height: 24px;
+  color: #854ddc;
+  font-size: 0.95rem;
+  font-family: "TiemposText-Regular", sans-serif;
+  padding: 8px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.loading-phrase {
+  position: relative;
+  transition: all 0.6s ease;
+  opacity: 1;
+  transform: translateY(0);
+  width: 100%;
+}
+
+.loading-phrase.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.loading-phrase.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

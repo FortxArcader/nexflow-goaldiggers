@@ -1,0 +1,249 @@
+/* BentoLayout.css */
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bento-item {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(133, 77, 220, 0.3);
+  border-radius: 20px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 0 10px #854ddc, 0 0 20px #854ddc inset;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bento-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #854ddc, 0 0 30px #854ddc inset;
+}
+
+.bento-item h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #d6b1ff;
+}
+
+.bento-item p {
+  font-size: 1rem;
+  color: #cfcfcf;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 6rem 2rem;  */
+  margin: 0;
+  background: #0d0d0d;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 0;
+}
+/* css for division gallery */
+body {
+  background-color: #0a0014;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Bento Grid */
+.bento-container {
+  display: grid;
+  grid-template-areas: "camera front" "camera true" "zoom zoom";
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1300px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #0d0d0d;
+  border-radius: 20px;
+}
+
+.bento-item {
+  background: #1a1a1a;
+  color: #eaeaea;
+  padding: 30px; /* was 20px */
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(128, 0, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(128, 0, 255, 0.4);
+  font-size: 1.1rem;
+}
+
+.bento-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(128, 0, 255, 0.5);
+  border-color: rgba(128, 0, 255, 0.7);
+}
+
+#camera-system {
+  grid-area: camera;
+  background: linear-gradient(145deg, #25003e, #120024);
+}
+
+#front-camera {
+  grid-area: front;
+  background: linear-gradient(145deg, #25003e, #120024);
+}
+
+#true-lens {
+  grid-area: true;
+  background: linear-gradient(145deg, #1f0036, #0c001b);
+}
+
+#zoom {
+  grid-area: zoom;
+  background: linear-gradient(145deg, #280044, #140022);
+}
+
+h2 {
+  font-size: 2rem; /* was 1.5rem */
+  margin-bottom: 10px;
+  color: #c770ff;
+  text-shadow: 0 0 8px #c770ff;
+}
+
+p {
+  font-size: 1.2rem; /* was 1rem */
+  line-height: 1.5;
+  color: #d4c2f2;
+}
+
+.feature-details span {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #b580ff;
+  text-shadow: 0 0 5px #9e4dff;
+}
+
+/* bento media queries */
+
+/* Tablet Screens - Stack front camera & true lens below camera */
+@media (max-width: 1024px) {
+  .bento-container {
+    grid-template-areas:
+      "camera"
+      "front"
+      "true"
+      "zoom";
+    grid-template-columns: 1fr;
+    max-width: 98vw;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .bento-item {
+    padding: 25px;
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p,
+  .feature-details span {
+    font-size: 1rem;
+  }
+}
+
+/* Small Tablets & Large Phones */
+@media (max-width: 768px) {
+  .bento-container {
+    padding: 10px;
+    gap: 14px;
+  }
+
+  .bento-item {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p,
+  .feature-details span {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .bento-container {
+    padding: 4px;
+    gap: 8px;
+  }
+
+  .bento-item {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p,
+  .feature-details span {
+    font-size: 0.8rem;
+  }
+
+  .img-new {
+    width: 90vw !important;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .img_ai_new {
+    width: 90vw !important;
+    max-width: 100%;
+    height: auto;
+    padding-top: 30px;
+  }
+}
+
+/* Make images responsive in all cases */
+.img-new,
+.img_ai_new {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.img-new {
+  width: auto;
+  width: 400px;
+}
+
+.img_ai_new {
+  padding-top: 150px;
+}
